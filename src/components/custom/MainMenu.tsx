@@ -30,7 +30,7 @@ export default function MainMenu() {
             <div className="py-[100px] flex flex-col space-y-5 items-center">
                 <NavigationCard title="PLAY" url="/" />
                 <NavigationCard title="TUTORIAL" url="/about" />
-                <NavigationCard title="WIKI" url="/contact" />
+                <NavigationCard title="WIKI" url="/wiki" />
                 <NavigationCard title="LORE" url="/lore" /> 
             </div>
         </>

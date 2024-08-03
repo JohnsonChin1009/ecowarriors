@@ -1,7 +1,9 @@
+import MainMenu from "@/components/custom/MainMenu";
+
 export default function HomePage() {
   return (
-    <main className="">
-
+    <main className="relative">
+        <MainMenu />
     </main>
   );
 }

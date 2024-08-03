@@ -17,7 +17,7 @@ function NavigationCard({ title, url }: NavigationCardProps) {
     return (
         <div
             onClick={handleClick}
-            className="cursor-pointer rounded-lg border-2 p-4 lg:p-6 z-[1] text-center hover:bg-gray-100 transition-colors duration-200 w-[300px] lg:w-[425px] text-[16px] lg:text-[20px]"
+            className="cursor-pointer rounded-lg border-2 p-4 lg:p-6 z-[1] text-center hover:bg-gray-100 transition-colors duration-200 w-[300px] lg:w-[425px] text-[16px] lg:text-[20px] shadow-md active:scale-95 active:shadow-sm"
         >
             <span className="font-bold">{title}</span>
         </div>

@@ -1,8 +1,8 @@
 'use client';
 
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { signout } from "@/app/login/actions";
+import React, { useEffect, useState } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { signout } from '@/app/login/actions';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +10,23 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
+import { getUserDetails } from '@/utils/user/profile';
 
 export default function Header() {
+  const [userDetails, setUserDetails] = useState<{ username: string; profilePicture: string } | null>(null);
+
+  useEffect(() => {
+    async function fetchUserDetails() {
+      const data = await getUserDetails();
+      if (data!.length > 0) {
+        setUserDetails(data![0]);
+      }
+    }
+
+    fetchUserDetails();
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
   const handleSignOut = async () => {
     await signout();
   };
@@ -27,12 +41,12 @@ export default function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar className="w-[50px] h-[50px]">
-                <AvatarImage></AvatarImage>
-                <AvatarFallback>JC</AvatarFallback>
+                <AvatarImage src={userDetails?.profilePicture} alt={userDetails?.username} />
+                <AvatarFallback>{userDetails ? userDetails.username.charAt(0) : 'JC'}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>Johnson Chin</DropdownMenuLabel> {/* I want this value to be taken from the public.profiles table (username column) */}
+              <DropdownMenuLabel>{userDetails?.username}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <a href="/profile" className="hover:font-bold">Profile</a>

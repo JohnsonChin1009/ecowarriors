@@ -50,7 +50,7 @@ export async function signup(formData: FormData) {
 
 export async function signout() {
     const supabase = createClient()
-  
+
     // Perform sign-out
     const { error } = await supabase.auth.signOut()
   
@@ -61,6 +61,7 @@ export async function signout() {
       redirect('/error')
     } else {
       // Redirect to login page after successful sign-out
+      cookies().delete("userID");
       redirect('/login')
     }
 }

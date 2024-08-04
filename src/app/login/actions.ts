@@ -1,28 +1,29 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
-
-import { createClient } from '@/utils/supabase/server'
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
+import { cookies } from "next/headers"
 
 export async function login(formData: FormData) {
   const supabase = createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
+  const { data: session, error } = await supabase.auth.signInWithPassword({
     email: formData.get('email') as string,
     password: formData.get('password') as string,
-  }
-
-  const { error } = await supabase.auth.signInWithPassword(data)
+  })
 
   if (error) {
     redirect('/error')
+  } else {
+    if (session?.user?.id) {
+        cookies().set('userID', session.user.id)
+    } else {
+        console.log("User ID not available")
+    }
+    revalidatePath('/', 'layout')
+    redirect('/')
   }
-
-  revalidatePath('/', 'layout')
-  redirect('/')
 }
 
 export async function signup(formData: FormData) {
@@ -46,6 +47,7 @@ export async function signup(formData: FormData) {
   revalidatePath('/', 'layout')
   redirect('/')
 }
+
 export async function signout() {
     const supabase = createClient()
   
@@ -61,4 +63,4 @@ export async function signout() {
       // Redirect to login page after successful sign-out
       redirect('/login')
     }
-  }
+}

@@ -13,11 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Header() {
-  // Client-side function to handle sign-out
   const handleSignOut = async () => {
-    
     await signout();
-    // Optionally, you can add more client-side logic here if needed
   };
 
   return (
@@ -35,7 +32,7 @@ export default function Header() {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>Johnson Chin</DropdownMenuLabel>
+              <DropdownMenuLabel>Johnson Chin</DropdownMenuLabel> {/* I want this value to be taken from the public.profiles table (username column) */}
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <a href="/profile" className="hover:font-bold">Profile</a>

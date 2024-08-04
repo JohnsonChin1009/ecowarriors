@@ -7,7 +7,6 @@ import { login, signup } from '@/app/login/actions';
 import { cn } from "@/lib/utils";
 
 export default function SignupForm() {
-  // State to keep track of which button was clicked
   const [action, setAction] = React.useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +24,7 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 py-6 md:p-8 shadow-input bg-white dark:bg-black border-2">
+    <div className="max-w-md mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black border-2">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to EcoWarriors!
       </h2>

@@ -4,6 +4,8 @@ create trigger create_profile_for_user_trigger after insert on auth.users for ea
 drop_create_profile_for_user_trigger
 drop trigger if exist create_profile_for_user_trigger on auth.users;
 
+#ubuntuyellow#
+
 Schema for table
 create table
   public.profiles (
@@ -16,3 +18,5 @@ create table
     constraint profiles_id_key unique (id),
     constraint profiles_id_fkey foreign key (id) references auth.users (id) on delete cascade
   ) tablespace pg_default;
+
+  

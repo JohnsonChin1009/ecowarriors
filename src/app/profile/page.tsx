@@ -9,7 +9,7 @@ import { getProfileDetails } from "@/utils/user/profile";
 import { MdOutlineEdit } from "react-icons/md";
 
 export default function ProfilePage() {
-    const [userDetails, setUserDetails] = useState<{ username: string; profilePicture: string; level: string; } | null>(null);
+    const [userDetails, setUserDetails] = useState<{ username: string; profilePicture: string; score: string; } | null>(null);
 
   useEffect(() => {
     async function fetchProfileDetails() {
@@ -38,7 +38,7 @@ export default function ProfilePage() {
                     <span>{userDetails?.username}</span>
                     <span><button><MdOutlineEdit className="text-black text-[18px]" /></button></span>
                 </h2>
-                <p className="text-sm font-semibold">LEVEL {userDetails?.level}</p>
+                <p className="text-sm font-semibold">Score {userDetails?.score}</p>
                 </div>
             </div>
             <Footer />

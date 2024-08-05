@@ -32,21 +32,28 @@ export async function signup(formData: FormData) {
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+  const userDetails = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
   }
 
-  const { error } = await supabase.auth.signUp(data)
+  const { data: session, error } = await supabase.auth.signUp(userDetails)
 
   if (error) {
     console.error('Sign up error:', error.message);
     // Optionally, display this error to the user
+  } else {
+    if (session?.user?.id) {
+        cookies().set('userID', session.user.id)
+    } else {
+        console.log("User ID not available")
   }
+}
 
   revalidatePath('/', 'layout')
   redirect('/')
 }
+
 
 export async function signout() {
     const supabase = createClient()

@@ -1,14 +1,18 @@
 "use client";
 
 import BackButton from "@/components/custom/BackButton";
+import MapsCarousel from "@/components/custom/wiki/MapsCarousel";
 import PowerUpCarousel from "@/components/custom/wiki/PowerUpCarousel";
 import { Separator } from "@/components/ui/separator";
+import Header from "@/components/custom/Header";
+import Footer from "@/components/custom/Footer";
 
 export default function WikiPage() {
     
 
     return (
         <>
+            <Header />
             <BackButton />
             <div className="py-5">
                 <div className="px-3">
@@ -18,12 +22,12 @@ export default function WikiPage() {
                 <Separator className="my-2 w-[95%] mx-auto"/>
                 <div className="space-y-5">   
                     <h2 className="font-semibold px-3">
-                        Power-Up Cards
+                        Maps
                     </h2>
-                    <PowerUpCarousel />
+                    <MapsCarousel />
                 </div>
-                
             </div>
+            <Footer />
         </>
     )
 }

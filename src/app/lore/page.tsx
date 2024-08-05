@@ -2,6 +2,8 @@
 
 import BackButton from "@/components/custom/BackButton";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import Header from "@/components/custom/Header";
+import Footer from "@/components/custom/Footer";
 
 export default function LorePage() {
     const title = [
@@ -18,6 +20,7 @@ export default function LorePage() {
     ]
     return (
         <>
+            <Header />
             <BackButton />
             <div className="py-2 px-4 lg:px-20">
                 <h1 className="font-semibold">
@@ -32,7 +35,7 @@ export default function LorePage() {
                 alt="Man holding a sword in a winter coat"
             />
             </div>
-            
+            <Footer />
         </>
     )
 }

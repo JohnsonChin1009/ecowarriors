@@ -35,7 +35,7 @@ export async function getProfileDetails() {
             {
                 username: data[0].username,
                 profilePicture: data[0].profilePicture,
-                level: data[0].level,
+                score: data[0].score,
             }
         ]
         return formattedDetails;

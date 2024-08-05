@@ -4,6 +4,7 @@ import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { login, signup } from '@/app/login/actions';
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 
 export default function SignupForm() {
@@ -16,7 +17,10 @@ export default function SignupForm() {
 
     if (action) {
       if (action === 'login') {
-        await login(formData);
+        const result = await login(formData);
+        if (result === "false") {
+          <Toaster />
+        }
       } else if (action === 'signup') {
         await signup(formData);
       }

@@ -11,21 +11,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { getUserDetails } from '@/utils/user/profile';
+import { getHeaderDetails } from '@/utils/user/profile';
 
 export default function Header() {
   const [userDetails, setUserDetails] = useState<{ username: string; profilePicture: string } | null>(null);
 
   useEffect(() => {
     async function fetchUserDetails() {
-      const data = await getUserDetails();
+      const data = await getHeaderDetails();
       if (data!.length > 0) {
         setUserDetails(data![0]);
       }
     }
 
     fetchUserDetails();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []);
 
   const handleSignOut = async () => {
     await signout();

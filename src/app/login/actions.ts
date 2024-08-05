@@ -14,7 +14,7 @@ export async function login(formData: FormData) {
   })
 
   if (error) {
-    redirect('/error')
+    return "false";
   } else {
     if (session?.user?.id) {
         cookies().set('userID', session.user.id)

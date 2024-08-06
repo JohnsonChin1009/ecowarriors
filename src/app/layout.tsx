@@ -18,9 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ubuntu.className}>
-        {children}
+        <main>{children}</main>
         <Toaster />
       </body>
+      
     </html>
   );
 }

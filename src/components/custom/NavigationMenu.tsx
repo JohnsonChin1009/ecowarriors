@@ -2,6 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 
+interface NavigationItem {
+    title: string;
+    url: string;
+}
+
 interface NavigationCardProps {
     title: string;
     url: string;
@@ -24,15 +29,16 @@ function NavigationCard({ title, url }: NavigationCardProps) {
     );
 }
 
-export default function MainMenu() {
+interface MenuProps {
+    items: NavigationItem[];
+}
+
+export default function Menu({ items }: MenuProps) {
     return (
-        <>
-            <div className="py-[100px] flex flex-col space-y-5 items-center">
-                <NavigationCard title="PLAY" url="/" />
-                <NavigationCard title="TUTORIAL" url="/about" />
-                <NavigationCard title="WIKI" url="/wiki" />
-                <NavigationCard title="LORE" url="/lore" /> 
-            </div>
-        </>
-    )
+        <div className="py-[100px] flex flex-col space-y-5 items-center">
+            {items.map((item, index) => (
+                <NavigationCard key={index} title={item.title} url={item.url} />
+            ))}
+        </div>
+    );
 }

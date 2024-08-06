@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { getAllMaps, Map, setActiveMap } from "@/utils/maps/maps";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import ErrorToast from "@/components/custom/ErrorToast";
 
 export default function SelectMapBox() {
     const router = useRouter();

@@ -6,8 +6,6 @@ import Back from "@/components/custom/BackButton"
 export default function ModePage() {
     const navigationItems = [
         { title: "SINGLE PLAYER", url: "/mode/chooseSettings" },
-        { title: "CREATE LOBBY", url: "/about" },
-        { title: "JOIN LOBBY", url: "/wiki" }
       ]
     return (
         <>  

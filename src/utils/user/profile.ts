@@ -1,6 +1,6 @@
 "use server";
 
-import { cookies } from "next/headers"
+import { cookies } from "next/headers";
 import { createClient } from '@/utils/supabase/server';
 
 export async function getHeaderDetails() {
@@ -17,7 +17,7 @@ export async function getHeaderDetails() {
                 username: data[0].username,
                 profilePicture: data[0].profilePicture,
             }
-        ]
+        ];
         return formattedDetails;
     }
 }
@@ -37,7 +37,7 @@ export async function getProfileDetails() {
                 profilePicture: data[0].profilePicture,
                 score: data[0].score,
             }
-        ]
+        ];
         return formattedDetails;
     }
 }
@@ -60,14 +60,35 @@ export async function updateUserScore(newScore: number) {
     const cookieObject = cookies().get('userID');
     const userID = cookieObject?.value;
 
-    const originalScore = getUserScore();
-    const latestScore = await originalScore + newScore;
-    const { error } = await supabase.from('profiles').update({ score: latestScore }).eq('id', userID);
+    try {
+        const originalScore = await getUserScore();
+        const latestScore = originalScore + newScore;
+        const { error } = await supabase.from('profiles').update({ score: latestScore }).eq('id', userID);
 
-    if (error) {
-        console.log(error);
-    } else { 
-        console.log(newScore);
-        console.log("Success");
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Score updated successfully");
+        }
+    } catch (error) {
+        console.log('Error updating user score:', error);
+    }
+}
+
+export async function updateProfile(details: { username: string; profilePicture: string }) {
+    const supabase = createClient();
+    const cookieObject = cookies().get('userID');
+    const userID = cookieObject?.value;
+
+    try {
+        const { error } = await supabase.from('profiles').update(details).eq('id', userID);
+
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Profile updated successfully");
+        }
+    } catch (error) {
+        console.log('Error updating profile:', error);
     }
 }

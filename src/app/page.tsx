@@ -5,7 +5,6 @@ import Footer from "@/components/custom/Footer";
 export default function HomePage() {
   const navigationItems = [
     { title: "PLAY", url: "/mode" },
-    { title: "TUTORIAL", url: "/about" },
     { title: "WIKI", url: "/wiki" },
     { title: "LORE", url: "/lore" },
   ]

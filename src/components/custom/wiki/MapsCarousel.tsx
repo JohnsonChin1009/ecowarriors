@@ -28,7 +28,7 @@ export default function MapsCarousel() {
     return (
         <>
             <div>   
-                This is Maps Carousel
+                This is Maps Carouse
             </div>
         </>
     )

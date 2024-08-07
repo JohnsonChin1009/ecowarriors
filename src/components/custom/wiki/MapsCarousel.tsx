@@ -8,23 +8,7 @@ import { getAllMaps, Map } from "@/utils/maps/maps";
 export default function MapsCarousel() {
     const [mapDetails, setMapDetails] = useState<Map | null>(null);
 
-    useEffect(() => {
-        async function fetchMapDetails() {
-            try {
-                const data = await getAllMaps();
-                if (data && data.length > 0) {
-                    setMapDetails(data);
-                } else {
-                    console.log("No map details found.");
-                }
-            } catch (error) {
-                console.error("Error fetching map details:", error);
-            }
-        }
-
-        fetchMapDetails();
-    }, []);
-
+    
     console.log(mapDetails);
 
     const cards = data.map((card, index) => (

@@ -92,3 +92,40 @@ export async function updateProfile(details: { username: string; profilePicture:
         console.log('Error updating profile:', error);
     }
 }
+
+export async function deleteUser() {
+    const supabase = createClient();
+    const cookieObject = cookies().get('userID');
+    const userID = cookieObject?.value;
+
+    const {data, error } = await supabase.from("profiles").delete().eq('id', userID);
+        
+    if (error) {
+        console.log(error);
+    } else {
+        cookies().delete('userID');
+        return data;
+    }
+   
+}
+
+export async function updateUserScorefromCard(newScore: number) {
+    const supabase = createClient();
+    const cookieObject = cookies().get('userID');
+    const userID = cookieObject?.value;
+
+    try {
+        const originalScore = await getUserScore();
+        const latestScore = originalScore + newScore;
+        const { error } = await supabase.from('profiles').update({ score: latestScore }).eq('id', userID);
+
+        if (error) {
+            console.log(error);
+        } else {
+            cookies().delete("selectedResource");
+            console.log("Score updated successfully");
+        }
+    } catch (error) {
+        console.log('Error updating user score:', error);
+    }
+}

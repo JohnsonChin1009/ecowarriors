@@ -69,6 +69,7 @@ export async function signout() {
     } else {
       // Redirect to login page after successful sign-out
       cookies().delete("userID");
+      cookies().delete("selectedResource");
       redirect('/login')
     }
 }

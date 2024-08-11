@@ -6,7 +6,7 @@ import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { getAllMaps, Map } from "@/utils/maps/maps";
 
 export default function MapsCarousel() {
-    const [mapDetails, setMapDetails] = useState<Map | null>(null);
+    const [mapDetails] = useState<Map | null>(null);
 
     
     console.log(mapDetails);
@@ -72,20 +72,4 @@ const data = [
       src: "https://plus.unsplash.com/premium_photo-1673264933092-a795ddc9f11b?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       content: <DummyContent />,
     },
-   
-    {
-      title: "Maps for your iPhone 15 Pro Max.",
-      src: "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      content: <DummyContent />,
-    },
-    {
-      title: "Photography just got better.",
-      src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      content: <DummyContent />,
-    },
-    {
-      title: "Hiring for a Staff Software Engineer",
-      src: "https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      content: <DummyContent />,
-    },
-  ];
+];
